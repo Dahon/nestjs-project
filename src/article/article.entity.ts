@@ -3,7 +3,6 @@ import {
   Column,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from '@app/user/user.entity';
@@ -28,7 +27,7 @@ export class ArticleEntity {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
   @Column('simple-array')
@@ -38,7 +37,7 @@ export class ArticleEntity {
   favoritesCount: number;
 
   @BeforeUpdate()
-  updateTimeStamp() {
+  updateTimestamp() {
     this.updatedAt = new Date();
   }
 

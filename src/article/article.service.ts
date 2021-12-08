@@ -23,6 +23,8 @@ export class ArticleService {
       article.tagList = [];
     }
 
+    article.slug = 'ffff';
+
     article.author = currentUser;
     return await this.articleRepository.save(article);
   }
